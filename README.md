@@ -35,6 +35,11 @@
     # ou
     yarn i
 
+    #Upando container com banco de dados
+    docker-compose up -d
+    #ou
+    docker-compose up
+
     # Rodar api
     npm run dev
     # ou
