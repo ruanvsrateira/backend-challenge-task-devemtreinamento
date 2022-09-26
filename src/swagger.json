@@ -1,0 +1,220 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Todolist Challenge by DevEmTreinamento",
+    "description": "challenge disponibilizado pela , O desafio consiste em um projeto que consiste em um todo-list para criar, deletar, criar tasks.",
+    "contact": {
+      "email": "vruan85@gmail.com"
+    },
+    "version": "1.0.0",
+    "servers": [
+      {
+        "url": "http://localhost:3333/",
+        "description": "API da challenge"
+      }
+    ]
+  },
+  "paths": {
+    "/tasks": {
+      "get": {
+        "summary": "Listagem das Tasks",
+        "description": "Rota responsável por listar tasks",
+        "tags": ["Tasks"],
+        "responses": {
+          "500": {
+            "description": "unknown error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "list",
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/task": {
+      "post": {
+        "summary": "Cadastro de Task",
+        "description": "Rota responsável por cadastrar tasks",
+        "tags": ["Tasks"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Task"
+              },
+              "examples": {
+                "task": {
+                  "value": {
+                    "title": "another task",
+                    "status": "pending"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "404": {
+            "description": "not find by this id!"
+          },
+          "500": {
+            "description": "unknown error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/task/{id}/delete": {
+      "delete": {
+        "summary": "Deletar Tasks",
+        "description": "Rota responsável por deletar tasks",
+        "tags": ["Tasks"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da task que vai ser deletada",
+            "required": true
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "not find by this id!"
+          },
+          "500": {
+            "description": "unknown error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/task/{id}/": {
+      "get": {
+        "summary": "Encontra única task",
+        "description": "Rota responsável por encontrar task pelo id",
+        "tags": ["Tasks"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da task que vai ser listada",
+            "required": true
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "not find by this id!"
+          },
+          "500": {
+            "description": "unknown error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/task/{id}/edit": {
+      "put": {
+        "summary": "Editar Tasks",
+        "description": "Rota responsável por editar tasks",
+        "tags": ["Tasks"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da task que será editada",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Task"
+              },
+              "examples": {
+                "task": {
+                  "value": {
+                    "title": "another task",
+                    "status": "pending"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "404": {
+            "description": "not find by this id!"
+          },
+          "500": {
+            "description": "unknown error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "components": {
+    "schemas": {
+      "Task": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

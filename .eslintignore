@@ -1,0 +1,6 @@
+/*.js
+/*.yml
+
+node_modules
+prisma
+dist
