@@ -25,10 +25,10 @@
 
 ```bash
     # clonar repositório
-    git clone http://github.com/ruanvsrateira/challenge-task-managment-DevEmTreinameto.git
+    git clone http://github.com/ruanvsrateira/challenge-task-managment-DevEmTreinamento.git
 
     # Entrar no repositório
-    cd challenge-task-managment-DevEmTreinameto
+    cd challenge-task-managment-DevEmTreinamento
 
     # Instalação de dependencias
     npm i
